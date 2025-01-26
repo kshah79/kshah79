@@ -1,5 +1,5 @@
 ---
-Hello, This is Kevin Shah
+Hello, This is Kevin Shah.
 ---
 
 ## Select which part of the Team organization you wish to explore from the top left of your screen.

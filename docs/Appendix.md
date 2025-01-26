@@ -3,7 +3,7 @@ title: Appendix
 ---
 
 ----
-Here is the team member appendix
+Here is the team member appendix.
 Here is the actual website of our team: https://ethan-s-team-314.github.io/Team-Organization-and-Charter/Appendix/
 ----
 ---
