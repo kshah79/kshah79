@@ -1,5 +1,3 @@
 ---
-title: "This is Kevin Shah"
-description: "EGR 314"
+Hi this is Kevin Shah
 ---
- ## Testing
