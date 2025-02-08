@@ -4,7 +4,7 @@
 ## Course: EGR 314  
 ## Assignment: Component Selection  
 
-## Link to the Docs: [Click here](https://docs.google.com/document/d/1qigu1PS6sEkJsZvPCGCvZsLTG8wVTScNkyyonee9E0w/edit?usp=sharing))
+## Link to the Docs: [Click here](https://docs.google.com/document/d/1qigu1PS6sEkJsZvPCGCvZsLTG8wVTScNkyyonee9E0w/edit?usp=sharing)
 ---
 
 ## Introduction
