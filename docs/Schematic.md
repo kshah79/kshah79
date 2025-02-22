@@ -1,4 +1,3 @@
-# Schematic for LCD (By: Kevin)
 
 ## Schematic Files
 
@@ -6,7 +5,7 @@
 [📎 View Schematic (PDF)](https://drive.google.com/file/d/138ljN8dbPxjJ-zv87nSGkIuTLtwcjpoq/view?usp=sharing)
 
 ### 🖼 Image Preview  
-![image](https://drive.google.com/file/d/1C0R3C0wRBg4irUjWr_S6vh3844Lp6e1_/view?usp=sharing)
+![image](./Kevin.png)
 ![Schematic Preview](https://drive.google.com/file/d/1C0R3C0wRBg4irUjWr_S6vh3844Lp6e1_/view?usp=sharing)
 
 ### 📁 Source Files (ZIP)  
