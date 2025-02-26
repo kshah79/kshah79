@@ -5,7 +5,7 @@
 [📎 View Schematic (PDF)](https://drive.google.com/file/d/138ljN8dbPxjJ-zv87nSGkIuTLtwcjpoq/view?usp=sharing)
 
 ### 🖼 Image Preview  
-![image](./Kevin.png)
+![image](./Schematic_Individual_Kevin.png)
 [Schematic Preview](https://drive.google.com/file/d/1C0R3C0wRBg4irUjWr_S6vh3844Lp6e1_/view?usp=sharing)
 
 ### 📁 Source Files (ZIP)  
