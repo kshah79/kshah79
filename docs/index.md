@@ -2,7 +2,7 @@
 
 Welcome to my GitHub project page! Here, you'll find all the essential details about my project. Navigate through the links above to explore different sections:
 
-- **[Appendix](#)** – A A comprehensive guide to the team's methods of communication and decision-making processes.
+- **[Appendix](#)** – A comprehensive guide to the team's methods of communication and decision-making processes.
 - **[BOM for LCD](#)** – A detailed Bill of Materials for the LCD module.
 - **[Block Diagram](#)** – A high-level system architecture representation.
 - **[Component Selection](#)** – Justification for component choices.
