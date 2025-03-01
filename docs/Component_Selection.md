@@ -60,7 +60,7 @@ The **ILI9341** was selected for its **high resolution, color display, and SPI i
 | **I2C**   | 2         | 1      | GPIO21, GPIO22        |
 
 ---
-### 🔹 2.6 Voltage Regulator Selection  
+### 🔹 2.4 Voltage Regulator Selection  
 
 #### **Voltage Regulator Options**  
 
