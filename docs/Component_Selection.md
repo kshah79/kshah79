@@ -40,8 +40,8 @@ The **ESP32** was chosen for its **efficient power usage, UART support, and MPLA
 | LCD Display        | Description                                    | Image  | Pros                              | Cons                                | Cost  | Link  |
 |--------------------|----------------------------------------------|--------|---------------------------------|---------------------------------|------|-------|
 | **ILI9341**        | 2.4-inch TFT LCD with SPI interface          | ![ILI9341](ILI9341.jpeg) | High resolution (240x320), full-color, SPI interface | Higher power consumption compared to monochrome displays | $13.99 | [Link](https://www.amazon.com/DIANN-ILI9341-Display-320x240-Screen/dp/B0BNQD38T2) |
-| **ST7789**        | 1.3-inch TFT LCD with SPI interface          | ![ST7789](ST7789.jpeg) | High contrast, compact size, supports SPI | Small display size | $10.50 | [Link](https://www.adafruit.com/product/4313) |
-| **Nextion NX3224T028** | 2.8-inch intelligent TFT touchscreen      | ![Nextion](Nextion.jpeg) | Touchscreen support, easy UI development, built-in processor | Higher cost, requires Nextion Editor software | $25.00 | [Link](https://www.itead.cc/nextion-nx3224t028.html) |
+| **HD44780**  | Standard 16x2 LCD               | ![HD44780](HD.jpeg) | Widely supported, cheap       | Requires more GPIO pins         | $3.00 | [Link](#) |
+| **SSD1306 OLED** | High-contrast OLED display | ![SSD1306](SSD1306.jpeg) | Modern design, compact        | More expensive                   | $3.70 | [Link](#) |
 
 ##### ✅ **Optimal Choice:**  
 The **ILI9341** was selected for its **high resolution, color display, and SPI interface**, making it suitable for applications requiring detailed visual output.
