@@ -33,7 +33,7 @@ The **ESP32** was chosen for its **efficient power usage, UART support, and MPLA
 
 ---
 
-### 🔹 2.5 LCD Display Selection  
+### 🔹 2.2 LCD Display Selection  
 
 #### **LCD Display Options**  
 
@@ -48,7 +48,7 @@ The **ILI9341** was selected for its **high resolution, color display, and SPI i
 
 ---
 
-## 🔹 ESP32 Table  
+## 🔹 2.3 ESP32 Table  
 
 - **Model:** ESP32-DEVKITC-32UE  
 - **Max Current:** 500 mA  
@@ -58,6 +58,20 @@ The **ILI9341** was selected for its **high resolution, color display, and SPI i
 | **UART**  | 3         | 1      | GPIO1, GPIO3          |
 | **SPI**   | 3         | 1      | GPIO19, GPIO23, GPIO18, GPIO5 |
 | **I2C**   | 2         | 1      | GPIO21, GPIO22        |
+
+---
+### 🔹 2.6 Voltage Regulator Selection  
+
+#### **Voltage Regulator Options**  
+
+| Voltage Regulator  | Description                          | Image  | Pros                              | Cons                                | Cost  | Link  |
+|--------------------|----------------------------------|--------|---------------------------------|---------------------------------|------|-------|
+| **AP63203WU-7** (Final Choice) | 3A synchronous buck converter | ![AP63203WU-7](AP6.png) | High efficiency, adjustable output voltage, low power dissipation | Produces heat at high loads | $1.38 | [Link](https://www.digikey.com/en/products/detail/diodes-incorporated/AP63203WU-7/9858426) |
+| **LM7805 Linear Regulator**  | 5V fixed output linear regulator | ![LM7805](LM785.png) | Simple drop-in solution, stable 5V output | Higher power loss, requires heatsink at higher currents | $1.07 | [Link](https://www.digikey.com/en/products/detail/onsemi/MC7805CTG/919409) |
+| **LM2575 Switching Regulator** | 5V step-down switching regulator | ![LM2575](LM275.png) | High efficiency, less heat dissipation | More complex circuit (requires inductor), higher cost | $2.84 | [Link](https://www.digikey.com/en/products/detail/texas-instruments/LM2575SX-5-0-NOPB/151989) |
+
+##### ✅ **Optimal Choice:**  
+The **AP63203WU-7** was selected for its **high efficiency, low power dissipation, and adjustable output voltage**, making it suitable for stable power supply requirements in our system.
 
 ---
 
