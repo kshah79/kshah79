@@ -4,12 +4,13 @@
 ## Course: EGR 314  
 ## Assignment: Component Selection  
 
-## 📄 [View Full Report](https://docs.google.com/document/d/16eBhtJ1a93Trgb88zd__rfECLNrKxZGtmtAWUIEOJiY/edit?usp=sharing)  
+📄 **[View Full Report](https://docs.google.com/document/d/16eBhtJ1a93Trgb88zd__rfECLNrKxZGtmtAWUIEOJiY/edit?usp=sharing)**  
+
 ---
 
 ## Introduction  
 
-This report includes multiple solutions for each major component of our design. I have considered and documented factors such as **cost, surface-mount compatibility, ease of integration, power efficiency, and performance**. Each selected component is justified based on the project requirements.  
+This report presents multiple solutions for each major component of our design. Factors such as **cost, surface-mount compatibility, ease of integration, power efficiency, and performance** have been considered and documented. Each selected component is justified based on the project requirements.  
 
 ---
 
@@ -23,37 +24,26 @@ The **microcontroller** is the core of our system, responsible for **processing 
 
 | Microcontroller           | Description                                      | Image  | Pros                                            | Cons                                          | Cost  | Link   |
 |---------------------------|--------------------------------------------------|--------|-------------------------------------------------|-----------------------------------------------|------|--------|
-| **Microchip PIC18F47Q10**  | 8-bit MCU, UART interfaces, SMD Package         | ![PIC18F47Q10](PIC.jpeg) | Low power, UART support, modular design       | Less processing power (compared to 32-bit)   | $0.00 | [Link](#) |
-| **ESP32-WROOM-32**         | 32-bit MCU with Wi-Fi/Bluetooth                 | ![ESP32](esp32.jpeg) | High performance, wireless communication      | Higher power consumption                     | $0.00 | [Link](#) |
-| **STM32F103C8T6**          | 32-bit ARM Cortex-M3                            | ![STM32](STM32.jpeg) | Most powerful, widely used in industry        | Complex to program, higher cost              | $6.08 | [Link](#) |
-
-#### **Microcontroller Requirements & Pin Allocation**  
-
-| Peripheral  | Requirement                                    |
-|------------|----------------------------------------------|
-| **UART**   | Minimum 3 (for inter-module communication) |
-| **I2C**    | Required for LCD and sensor communication  |
-| **ADC**    | Needed for water turbine sensor input     |
-| **GPIO**   | Needed for additional controls & indicators |
-| **PWM**    | Needed for LED indicators or actuators    |
-| **Power**  | Stable 3.3V and 5V power supply           |
+| **Microchip PIC18F47Q10**  | 8-bit MCU, UART interfaces, SMD Package         | ![PIC18F47Q10](https://raw.githubusercontent.com/your-github-username/repository-name/main/images/PIC.jpeg) | Low power, UART support, modular design       | Less processing power (compared to 32-bit)   | $0.00 | [Link](#) |
+| **ESP32-WROOM-32**         | 32-bit MCU with Wi-Fi/Bluetooth                 | ![ESP32](https://raw.githubusercontent.com/your-github-username/repository-name/main/images/esp32.jpeg) | High performance, wireless communication      | Higher power consumption                     | $0.00 | [Link](#) |
+| **STM32F103C8T6**          | 32-bit ARM Cortex-M3                            | ![STM32](https://raw.githubusercontent.com/your-github-username/repository-name/main/images/STM32.jpeg) | Most powerful, widely used in industry        | Complex to program, higher cost              | $6.08 | [Link](#) |
 
 ##### ✅ **Optimal Choice:**  
-The **PIC18F47Q10** was chosen for **efficient power usage, UART support, and MPLAB X compatibility**. Additionally, its **SMD packaging** adheres to EGR 314 specifications.  
+The **PIC18F47Q10** was chosen for its **efficient power usage, UART support, and MPLAB X compatibility**. Additionally, its **SMD packaging** adheres to EGR 314 specifications.  
 
 ---
 
 ### 🔹 2.2 Wi-Fi Module Selection  
 
-Since our system required **wireless communication**, I evaluated multiple Wi-Fi-enabled modules.  
+Since our system requires **wireless communication**, I evaluated multiple Wi-Fi-enabled modules.  
 
 #### **Wi-Fi Module Options**  
 
 | Wi-Fi Module            | Description                             | Image  | Pros                                             | Cons                                   | Cost  | Link  |
 |-------------------------|-----------------------------------------|--------|-------------------------------------------------|----------------------------------------|------|-------|
-| **ESP32-WROOM-32**       | Integrated Wi-Fi & Bluetooth           | ![ESP32-WROOM-32](esp32.jpeg) | High performance, dual-core          | Requires custom PCB design            | $0.00 | [Link](#) |
-| **ESP8266-12E-32**       | Lower-cost Wi-Fi module with UART       | ![ESP8266](ESP82.jpeg) | Power-efficient, low cost            | Limited flexibility                    | $10.00 | [Link](#) |
-| **RN4020 Bluetooth**     | Bluetooth module only                  | ![RN4020](RN4020.jpeg) | Low power consumption                 | No Wi-Fi, limited communication        | $11.61 | [Link](#) |
+| **ESP32-WROOM-32**       | Integrated Wi-Fi & Bluetooth           | ![ESP32-WROOM-32](https://raw.githubusercontent.com/your-github-username/repository-name/main/images/esp32.jpeg) | High performance, dual-core          | Requires custom PCB design            | $0.00 | [Link](#) |
+| **ESP8266-12E-32**       | Lower-cost Wi-Fi module with UART       | ![ESP8266](https://raw.githubusercontent.com/your-github-username/repository-name/main/images/ESP82.jpeg) | Power-efficient, low cost            | Limited flexibility                    | $10.00 | [Link](#) |
+| **RN4020 Bluetooth**     | Bluetooth module only                  | ![RN4020](https://raw.githubusercontent.com/your-github-username/repository-name/main/images/RN4020.jpeg) | Low power consumption                 | No Wi-Fi, limited communication        | $11.61 | [Link](#) |
 
 ##### ✅ **Optimal Choice:**  
 **ESP32-WROOM-32** was selected for **built-in Wi-Fi, cost efficiency, and system compatibility**.  
@@ -62,14 +52,14 @@ Since our system required **wireless communication**, I evaluated multiple Wi-Fi
 
 ### 🔹 2.5 LCD Display Selection  
 
-| LCD Display | Description                       | Image  | Pros                              | Cons                                | Cost  | Link  |
-|------------|----------------------------------|--------|---------------------------------|---------------------------------|------|-------|
-| **ERM1602FS-6** | 16x2 LCD with I2C interface  | ![ERM1602FS](ERM.jpeg) | Low cost, easy interface       | Requires I2C module              | $2.55 | [Link](#) |
-| **HD44780**  | Standard 16x2 LCD               | ![HD44780](HD.jpeg) | Widely supported, cheap       | Requires more GPIO pins         | $3.00 | [Link](#) |
-| **SSD1306 OLED** | High-contrast OLED display | ![SSD1306](SSD1306.jpeg) | Modern design, compact        | More expensive                   | $3.70 | [Link](#) |
+#### **LCD Display Options**  
+
+| LCD Display  | Description                        | Image  | Pros                              | Cons                                | Cost  | Link  |
+|-------------|----------------------------------|--------|---------------------------------|---------------------------------|------|-------|
+| **ILI9341** | 2.4-inch TFT LCD with SPI interface  | ![ILI9341](https://raw.githubusercontent.com/your-github-username/repository-name/main/images/ILI9341.jpeg) | High resolution (240x320), full-color, SPI interface | Higher power consumption compared to monochrome displays | $13.99 | [Link](https://www.amazon.com/DIANN-ILI9341-Display-320x240-Screen/dp/B0BNQD38T2) |
 
 ##### ✅ **Optimal Choice:**  
-**ERM1602FS-6** was selected for its **low power consumption and I2C compatibility**.  
+The **ILI9341** was selected for its **high resolution, color display, and SPI interface**, making it suitable for applications requiring detailed visual output.  
 
 ---
 
@@ -96,7 +86,8 @@ Additionally, I work with other subsystems to ensure **data integration, signal 
 
 ## 📌 Conclusion  
 
-This report provides the **rationale behind key component selections** based on **performance, cost, efficiency, and compatibility**.  
+This report provides the **rationale behind key component selections** based on **performance, cost, efficiency, and compatibility**. The inclusion of the **ILI9341** LCD display enhances our system's capability to provide detailed and colorful visual feedback, aligning with the project's objectives.  
 
 ---
+
 
