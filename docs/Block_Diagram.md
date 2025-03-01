@@ -5,5 +5,3 @@ Below is the **block diagram**, providing an overview of the components used in 
 ![Block Diagram](28_Feb_Kevin_Individual_Block_Diagram_EGR314.drawio.png)  
 
 🔗 [**View Full Block Diagram**](https://drive.google.com/file/d/1y2u3dRcogwUWcMYUiIJfNdwun7hrlTpl/view?usp=sharing)  
-
-If you have any feedback or suggestions, feel free to contribute! 🚀  
