@@ -33,6 +33,9 @@
 
 ### 🖼 Supporting Images  
 
+#### BOM  
+![BOM ](Bill_Of_Materials.png)  
+
 #### Digikey BOM  
 ![BOM Digikey](BOM_Digikey.png)  
 
