@@ -18,3 +18,26 @@
 | ESP32-S3-WROOM-1-N4 | 1 | $0.00 | $0.00 | $0.00 | $0.00 | Peralta Lab | Peralta Lab | Peralta Lab | Peralta Lab | Peralta Lab | Peralta Lab | 0 | 2/28/2025 | | -1 | U2 |
 
 **Total Cost:** $59.84
+
+---
+
+### 🔗 Useful Links  
+
+📄 **[BOM Spreadsheet](https://docs.google.com/spreadsheets/d/1B4-jbJj6Y7tSElVWh9dgk22N3pK1MZ-n/edit?usp=drive_link&ouid=116463241279276193345&rtpof=true&sd=true)**  
+
+🛒 **[Order Form - Digikey](https://docs.google.com/spreadsheets/d/1-0N1lIkbUpXZKQGJ7zUacZkNk9KAOLeZ/edit?usp=drive_link&ouid=116463241279276193345&rtpof=true&sd=true)**  
+
+🛍 **[Order Form - Amazon](https://docs.google.com/spreadsheets/d/1thl4na_Zp6JJeODk620oabDfIGcsMig7/edit?usp=drive_link&ouid=116463241279276193345&rtpof=true&sd=true)**  
+
+---
+
+### 🖼 Supporting Images  
+
+#### Digikey BOM  
+![BOM Digikey](BOM_Digikey.png)  
+
+#### Amazon BOM  
+![BOM Amazon](BOM_Amazom.png)  
+
+---
+
