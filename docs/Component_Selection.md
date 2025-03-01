@@ -24,29 +24,12 @@ The **microcontroller** is the core of our system, responsible for **processing 
 
 | Microcontroller           | Description                                      | Image  | Pros                                            | Cons                                          | Cost  | Link   |
 |---------------------------|--------------------------------------------------|--------|-------------------------------------------------|-----------------------------------------------|------|--------|
-| **Microchip PIC18F47Q10**  | 8-bit MCU, UART interfaces, SMD Package         | ![PIC18F47Q10](https://raw.githubusercontent.com/your-github-username/repository-name/main/images/PIC.jpeg) | Low power, UART support, modular design       | Less processing power (compared to 32-bit)   | $0.00 | [Link](#) |
-| **ESP32-WROOM-32**         | 32-bit MCU with Wi-Fi/Bluetooth                 | ![ESP32](https://raw.githubusercontent.com/your-github-username/repository-name/main/images/esp32.jpeg) | High performance, wireless communication      | Higher power consumption                     | $0.00 | [Link](#) |
-| **STM32F103C8T6**          | 32-bit ARM Cortex-M3                            | ![STM32](https://raw.githubusercontent.com/your-github-username/repository-name/main/images/STM32.jpeg) | Most powerful, widely used in industry        | Complex to program, higher cost              | $6.08 | [Link](#) |
+| **Microchip PIC18F47Q10**  | 8-bit MCU, UART interfaces, SMD Package         | ![PIC18F47Q10](PIC.jpeg) | Low power, UART support, modular design       | Less processing power (compared to 32-bit)   | $0.00 | [Link](#) |
+| **ESP32-WROOM-32**         | 32-bit MCU with Wi-Fi/Bluetooth                 | ![ESP32](esp32.jpeg) | High performance, wireless communication      | Higher power consumption                     | $0.00 | [Link](#) |
+| **STM32F103C8T6**          | 32-bit ARM Cortex-M3                            | ![STM32](STM32.jpeg) | Most powerful, widely used in industry        | Complex to program, higher cost              | $6.08 | [Link](#) |
 
 ##### ✅ **Optimal Choice:**  
-The **PIC18F47Q10** was chosen for its **efficient power usage, UART support, and MPLAB X compatibility**. Additionally, its **SMD packaging** adheres to EGR 314 specifications.  
-
----
-
-### 🔹 2.2 Wi-Fi Module Selection  
-
-Since our system requires **wireless communication**, I evaluated multiple Wi-Fi-enabled modules.  
-
-#### **Wi-Fi Module Options**  
-
-| Wi-Fi Module            | Description                             | Image  | Pros                                             | Cons                                   | Cost  | Link  |
-|-------------------------|-----------------------------------------|--------|-------------------------------------------------|----------------------------------------|------|-------|
-| **ESP32-WROOM-32**       | Integrated Wi-Fi & Bluetooth           | ![ESP32-WROOM-32](https://raw.githubusercontent.com/your-github-username/repository-name/main/images/esp32.jpeg) | High performance, dual-core          | Requires custom PCB design            | $0.00 | [Link](#) |
-| **ESP8266-12E-32**       | Lower-cost Wi-Fi module with UART       | ![ESP8266](https://raw.githubusercontent.com/your-github-username/repository-name/main/images/ESP82.jpeg) | Power-efficient, low cost            | Limited flexibility                    | $10.00 | [Link](#) |
-| **RN4020 Bluetooth**     | Bluetooth module only                  | ![RN4020](https://raw.githubusercontent.com/your-github-username/repository-name/main/images/RN4020.jpeg) | Low power consumption                 | No Wi-Fi, limited communication        | $11.61 | [Link](#) |
-
-##### ✅ **Optimal Choice:**  
-**ESP32-WROOM-32** was selected for **built-in Wi-Fi, cost efficiency, and system compatibility**.  
+The **ESP32** was chosen for its **efficient power usage, UART support, and MPLAB X compatibility**. Additionally, its **SMD packaging** adheres to EGR 314 specifications.  
 
 ---
 
@@ -54,12 +37,14 @@ Since our system requires **wireless communication**, I evaluated multiple Wi-Fi
 
 #### **LCD Display Options**  
 
-| LCD Display  | Description                        | Image  | Pros                              | Cons                                | Cost  | Link  |
-|-------------|----------------------------------|--------|---------------------------------|---------------------------------|------|-------|
-| **ILI9341** | 2.4-inch TFT LCD with SPI interface  | ![ILI9341](https://raw.githubusercontent.com/your-github-username/repository-name/main/images/ILI9341.jpeg) | High resolution (240x320), full-color, SPI interface | Higher power consumption compared to monochrome displays | $13.99 | [Link](https://www.amazon.com/DIANN-ILI9341-Display-320x240-Screen/dp/B0BNQD38T2) |
+| LCD Display        | Description                                    | Image  | Pros                              | Cons                                | Cost  | Link  |
+|--------------------|----------------------------------------------|--------|---------------------------------|---------------------------------|------|-------|
+| **ILI9341**        | 2.4-inch TFT LCD with SPI interface          | ![ILI9341](ILI9341.jpeg) | High resolution (240x320), full-color, SPI interface | Higher power consumption compared to monochrome displays | $13.99 | [Link](https://www.amazon.com/DIANN-ILI9341-Display-320x240-Screen/dp/B0BNQD38T2) |
+| **ST7789**        | 1.3-inch TFT LCD with SPI interface          | ![ST7789](ST7789.jpeg) | High contrast, compact size, supports SPI | Small display size | $10.50 | [Link](https://www.adafruit.com/product/4313) |
+| **Nextion NX3224T028** | 2.8-inch intelligent TFT touchscreen      | ![Nextion](Nextion.jpeg) | Touchscreen support, easy UI development, built-in processor | Higher cost, requires Nextion Editor software | $25.00 | [Link](https://www.itead.cc/nextion-nx3224t028.html) |
 
 ##### ✅ **Optimal Choice:**  
-The **ILI9341** was selected for its **high resolution, color display, and SPI interface**, making it suitable for applications requiring detailed visual output.  
+The **ILI9341** was selected for its **high resolution, color display, and SPI interface**, making it suitable for applications requiring detailed visual output.
 
 ---
 
