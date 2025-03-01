@@ -4,6 +4,8 @@
 **Name:** Kevin Shah  
 **Class:** EGR 314 | 12:00 PM - 1:15 PM (Monday/Wednesday)  
 **Professor:** Dr. Kevin Nichols  
+### 🌐 Team Website  
+🔗 **[Click here](https://ethan-s-team-314.github.io/Team-Organization-and-Charter/)**  
 
 ---
 
