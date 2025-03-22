@@ -12,13 +12,13 @@
       
       
       
-        <link rel="canonical" href="https://embedded-systems-design.github.io/template_report/Component_Selection/">
+        <link rel="canonical" href="https://embedded-systems-design.github.io/template_report/API/">
       
       
-        <link rel="prev" href="../Block_Diagram/">
+        <link rel="prev" href="..">
       
       
-        <link rel="next" href="../Datasheet/">
+        <link rel="next" href="../Appendix/">
       
       
       <link rel="icon" href="../static/logo.png">
@@ -29,7 +29,7 @@
 
     
       
-        <title>EGR 314 - Component Selection Report - Kevin Shah</title>
+        <title>📡 API – HMI Subsystem (ESP32) - Kevin Shah</title>
       
     
     
@@ -93,7 +93,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#egr-314-component-selection-report" class="md-skip">
+        <a href="#api-hmi-subsystem-esp32" class="md-skip">
           Skip to content
         </a>
       
@@ -128,7 +128,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              EGR 314 - Component Selection Report
+              📡 API – HMI Subsystem (ESP32)
             
           </span>
         </div>
@@ -217,9 +217,11 @@
         
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../API/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
     
@@ -285,11 +287,9 @@
         
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../Component_Selection/" class="md-tabs__link">
         
   
     
@@ -425,9 +425,29 @@
       
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../API/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    📡 API – HMI Subsystem (ESP32)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -436,6 +456,121 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#subsystem-role" class="md-nav__link">
+    🔍 Subsystem Role
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message-exchange-summary" class="md-nav__link">
+    🔄 Message Exchange Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#messages-sent-uart" class="md-nav__link">
+    📨 Messages Sent (UART)
+  </a>
+  
+    <nav class="md-nav" aria-label="📨 Messages Sent (UART)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#message-type-1-set-system-speed" class="md-nav__link">
+    Message Type 1 — Set System Speed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-type-2-request-sensor-data" class="md-nav__link">
+    Message Type 2 — Request Sensor Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-type-5-cloud-update" class="md-nav__link">
+    Message Type 5 — Cloud Update
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#messages-received-uart" class="md-nav__link">
+    📥 Messages Received (UART)
+  </a>
+  
+    <nav class="md-nav" aria-label="📥 Messages Received (UART)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#message-type-3-sensor-data-response" class="md-nav__link">
+    Message Type 3 — Sensor Data Response
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-type-6-error-message" class="md-nav__link">
+    Message Type 6 — Error Message
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#internal-spi-message-not-uart" class="md-nav__link">
+    📺 Internal SPI Message (Not UART)
+  </a>
+  
+    <nav class="md-nav" aria-label="📺 Internal SPI Message (Not UART)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lcd-display-update-local-only" class="md-nav__link">
+    LCD Display Update (Local Only)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -501,29 +636,9 @@
       
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    EGR 314 - Component Selection Report
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Component_Selection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -532,193 +647,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#name-kevin-shah" class="md-nav__link">
-    Name: Kevin Shah
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#course-egr-314" class="md-nav__link">
-    Course: EGR 314
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#assignment-component-selection" class="md-nav__link">
-    Assignment: Component Selection
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    Introduction
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#major-component-selection" class="md-nav__link">
-    Major Component Selection
-  </a>
-  
-    <nav class="md-nav" aria-label="Major Component Selection">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-microcontroller-selection" class="md-nav__link">
-    🔹 2.1 Microcontroller Selection
-  </a>
-  
-    <nav class="md-nav" aria-label="🔹 2.1 Microcontroller Selection">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#microcontroller-options" class="md-nav__link">
-    Microcontroller Options
-  </a>
-  
-    <nav class="md-nav" aria-label="Microcontroller Options">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#optimal-choice" class="md-nav__link">
-    ✅ Optimal Choice:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-lcd-display-selection" class="md-nav__link">
-    🔹 2.2 LCD Display Selection
-  </a>
-  
-    <nav class="md-nav" aria-label="🔹 2.2 LCD Display Selection">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#lcd-display-options" class="md-nav__link">
-    LCD Display Options
-  </a>
-  
-    <nav class="md-nav" aria-label="LCD Display Options">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#optimal-choice_1" class="md-nav__link">
-    ✅ Optimal Choice:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#23-esp32-table" class="md-nav__link">
-    🔹 2.3 ESP32 Table
-  </a>
-  
-    <nav class="md-nav" aria-label="🔹 2.3 ESP32 Table">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#24-voltage-regulator-selection" class="md-nav__link">
-    🔹 2.4 Voltage Regulator Selection
-  </a>
-  
-    <nav class="md-nav" aria-label="🔹 2.4 Voltage Regulator Selection">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#voltage-regulator-options" class="md-nav__link">
-    Voltage Regulator Options
-  </a>
-  
-    <nav class="md-nav" aria-label="Voltage Regulator Options">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#optimal-choice_2" class="md-nav__link">
-    ✅ Optimal Choice:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#personal-responsibilities" class="md-nav__link">
-    📌 Personal Responsibilities
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    📌 Conclusion
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -807,104 +735,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#name-kevin-shah" class="md-nav__link">
-    Name: Kevin Shah
+  <a href="#subsystem-role" class="md-nav__link">
+    🔍 Subsystem Role
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#course-egr-314" class="md-nav__link">
-    Course: EGR 314
+  <a href="#message-exchange-summary" class="md-nav__link">
+    🔄 Message Exchange Summary
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#assignment-component-selection" class="md-nav__link">
-    Assignment: Component Selection
+  <a href="#messages-sent-uart" class="md-nav__link">
+    📨 Messages Sent (UART)
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    Introduction
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#major-component-selection" class="md-nav__link">
-    Major Component Selection
-  </a>
-  
-    <nav class="md-nav" aria-label="Major Component Selection">
+    <nav class="md-nav" aria-label="📨 Messages Sent (UART)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-microcontroller-selection" class="md-nav__link">
-    🔹 2.1 Microcontroller Selection
-  </a>
-  
-    <nav class="md-nav" aria-label="🔹 2.1 Microcontroller Selection">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#microcontroller-options" class="md-nav__link">
-    Microcontroller Options
-  </a>
-  
-    <nav class="md-nav" aria-label="Microcontroller Options">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#optimal-choice" class="md-nav__link">
-    ✅ Optimal Choice:
+  <a href="#message-type-1-set-system-speed" class="md-nav__link">
+    Message Type 1 — Set System Speed
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#22-lcd-display-selection" class="md-nav__link">
-    🔹 2.2 LCD Display Selection
-  </a>
-  
-    <nav class="md-nav" aria-label="🔹 2.2 LCD Display Selection">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#lcd-display-options" class="md-nav__link">
-    LCD Display Options
-  </a>
-  
-    <nav class="md-nav" aria-label="LCD Display Options">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#optimal-choice_1" class="md-nav__link">
-    ✅ Optimal Choice:
+  <a href="#message-type-2-request-sensor-data" class="md-nav__link">
+    Message Type 2 — Request Sensor Data
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#message-type-5-cloud-update" class="md-nav__link">
+    Message Type 5 — Cloud Update
+  </a>
   
 </li>
         
@@ -914,43 +783,24 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#23-esp32-table" class="md-nav__link">
-    🔹 2.3 ESP32 Table
+  <a href="#messages-received-uart" class="md-nav__link">
+    📥 Messages Received (UART)
   </a>
   
-    <nav class="md-nav" aria-label="🔹 2.3 ESP32 Table">
+    <nav class="md-nav" aria-label="📥 Messages Received (UART)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#24-voltage-regulator-selection" class="md-nav__link">
-    🔹 2.4 Voltage Regulator Selection
-  </a>
-  
-    <nav class="md-nav" aria-label="🔹 2.4 Voltage Regulator Selection">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#voltage-regulator-options" class="md-nav__link">
-    Voltage Regulator Options
-  </a>
-  
-    <nav class="md-nav" aria-label="Voltage Regulator Options">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#optimal-choice_2" class="md-nav__link">
-    ✅ Optimal Choice:
+  <a href="#message-type-3-sensor-data-response" class="md-nav__link">
+    Message Type 3 — Sensor Data Response
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#message-type-6-error-message" class="md-nav__link">
+    Message Type 6 — Error Message
+  </a>
   
 </li>
         
@@ -960,16 +810,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#personal-responsibilities" class="md-nav__link">
-    📌 Personal Responsibilities
+  <a href="#internal-spi-message-not-uart" class="md-nav__link">
+    📺 Internal SPI Message (Not UART)
+  </a>
+  
+    <nav class="md-nav" aria-label="📺 Internal SPI Message (Not UART)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lcd-display-update-local-only" class="md-nav__link">
+    LCD Display Update (Local Only)
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    📌 Conclusion
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -988,7 +844,7 @@
                   
 
   
-    <a href="https://github.com/embedded-systems-design/template_report/edit/main/docs/Component_Selection.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/embedded-systems-design/template_report/edit/main/docs/API.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -996,201 +852,305 @@
   
 
 
-<h1 id="egr-314-component-selection-report">EGR 314 - Component Selection Report</h1>
-<h2 id="name-kevin-shah">Name: Kevin Shah</h2>
-<h2 id="course-egr-314">Course: EGR 314</h2>
-<h2 id="assignment-component-selection">Assignment: Component Selection</h2>
-<p>📄 <strong><a href="https://docs.google.com/document/d/16eBhtJ1a93Trgb88zd__rfECLNrKxZGtmtAWUIEOJiY/edit?usp=sharing">View Full Report</a></strong>  </p>
-<hr />
-<h2 id="introduction">Introduction</h2>
-<p>This report presents multiple solutions for each major component of our design. Factors such as <strong>cost, surface-mount compatibility, ease of integration, power efficiency, and performance</strong> have been considered and documented. Each selected component is justified based on the project requirements.  </p>
-<hr />
-<h2 id="major-component-selection">Major Component Selection</h2>
-<h3 id="21-microcontroller-selection">🔹 2.1 Microcontroller Selection</h3>
-<p>The <strong>microcontroller</strong> is the core of our system, responsible for <strong>processing sensor data, managing communication, and executing tasks between modules</strong>.  </p>
-<h4 id="microcontroller-options"><strong>Microcontroller Options</strong></h4>
+<h1 id="api-hmi-subsystem-esp32">📡 API – HMI Subsystem (ESP32)</h1>
+<h2 id="subsystem-role">🔍 Subsystem Role</h2>
+<p>The HMI Subsystem, based on an ESP32 module, serves as the primary interface between the user and the full embedded system. It:
+- Initiates control messages (e.g., motor speed).
+- Requests and processes sensor data.
+- Displays real-time information on a local LCD via SPI.
+- Publishes environmental data to a cloud server using Wi-Fi (MQTT).
+- Handles error reporting across the system.</p>
+<h2 id="message-exchange-summary">🔄 Message Exchange Summary</h2>
 <table>
 <thead>
 <tr>
-<th>Microcontroller</th>
+<th>Direction</th>
+<th>Message Type</th>
 <th>Description</th>
-<th>Image</th>
-<th>Pros</th>
-<th>Cons</th>
-<th>Cost</th>
-<th>Link</th>
+<th>Communication</th>
+<th>Status</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Microchip PIC18F47Q10</strong></td>
-<td>8-bit MCU, UART interfaces, SMD Package</td>
-<td><a class="glightbox" href="../PIC.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="PIC18F47Q10" src="../PIC.jpeg" /></a></td>
-<td>Low power, UART support, modular design</td>
-<td>Less processing power (compared to 32-bit)</td>
-<td>$0.00</td>
-<td><a href="#">Link</a></td>
+<td>Sent</td>
+<td>1</td>
+<td>Set System Speed</td>
+<td>UART</td>
+<td>✅</td>
 </tr>
 <tr>
-<td><strong>ESP32-WROOM-32</strong></td>
-<td>32-bit MCU with Wi-Fi/Bluetooth</td>
-<td><a class="glightbox" href="../esp32.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ESP32" src="../esp32.jpeg" /></a></td>
-<td>High performance, wireless communication</td>
-<td>Higher power consumption</td>
-<td>$0.00</td>
-<td><a href="#">Link</a></td>
+<td>Sent</td>
+<td>2</td>
+<td>Request Sensor Data</td>
+<td>UART</td>
+<td>✅</td>
 </tr>
 <tr>
-<td><strong>STM32F103C8T6</strong></td>
-<td>32-bit ARM Cortex-M3</td>
-<td><a class="glightbox" href="../STM32.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="STM32" src="../STM32.jpeg" /></a></td>
-<td>Most powerful, widely used in industry</td>
-<td>Complex to program, higher cost</td>
-<td>$6.08</td>
-<td><a href="#">Link</a></td>
+<td>Sent</td>
+<td>5</td>
+<td>Cloud Update (JSON)</td>
+<td>Wi-Fi</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Received</td>
+<td>3</td>
+<td>Sensor Data Response</td>
+<td>UART</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Received</td>
+<td>6</td>
+<td>Error Message</td>
+<td>UART</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Internal</td>
+<td>—</td>
+<td>LCD Display Update (via SPI)</td>
+<td>SPI (Local)</td>
+<td>✅</td>
 </tr>
 </tbody>
 </table>
-<h5 id="optimal-choice">✅ <strong>Optimal Choice:</strong></h5>
-<p>The <strong>ESP32</strong> was chosen for its <strong>efficient power usage, UART support, and MPLAB X compatibility</strong>. Additionally, its <strong>SMD packaging</strong> adheres to EGR 314 specifications.  </p>
-<hr />
-<h3 id="22-lcd-display-selection">🔹 2.2 LCD Display Selection</h3>
-<h4 id="lcd-display-options"><strong>LCD Display Options</strong></h4>
+<p>✅ All UART messages conform to the project-wide packet structure (Bytes 0–63) with the message payload occupying Bytes 4–61.</p>
+<h2 id="messages-sent-uart">📨 Messages Sent (UART)</h2>
+<h3 id="message-type-1-set-system-speed">Message Type 1 — Set System Speed</h3>
 <table>
 <thead>
 <tr>
-<th>LCD Display</th>
-<th>Description</th>
-<th>Image</th>
-<th>Pros</th>
-<th>Cons</th>
-<th>Cost</th>
-<th>Link</th>
+<th>Byte(s)</th>
+<th>Variable Name</th>
+<th>Data Type</th>
+<th>Min</th>
+<th>Max</th>
+<th>Example</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>ILI9341</strong></td>
-<td>2.4-inch TFT LCD with SPI interface</td>
-<td><a class="glightbox" href="../ILI9341.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ILI9341" src="../ILI9341.jpeg" /></a></td>
-<td>High resolution (240x320), full-color, SPI interface</td>
-<td>Higher power consumption compared to monochrome displays</td>
-<td>$13.99</td>
-<td><a href="https://www.amazon.com/DIANN-ILI9341-Display-320x240-Screen/dp/B0BNQD38T2">Link</a></td>
+<td>1–2</td>
+<td>msg_type</td>
+<td>uint16_t</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
 </tr>
 <tr>
-<td><strong>HD44780</strong></td>
-<td>Standard 16x2 LCD</td>
-<td><a class="glightbox" href="../HD.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="HD44780" src="../HD.jpeg" /></a></td>
-<td>Widely supported, cheap</td>
-<td>Requires more GPIO pins</td>
-<td>$3.00</td>
-<td><a href="#">Link</a></td>
-</tr>
-<tr>
-<td><strong>SSD1306 OLED</strong></td>
-<td>High-contrast OLED display</td>
-<td><a class="glightbox" href="../SSD1306.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="SSD1306" src="../SSD1306.jpeg" /></a></td>
-<td>Modern design, compact</td>
-<td>More expensive</td>
-<td>$3.70</td>
-<td><a href="#">Link</a></td>
+<td>3–4</td>
+<td>speed_val</td>
+<td>uint16_t</td>
+<td>0</td>
+<td>1000</td>
+<td>200</td>
 </tr>
 </tbody>
 </table>
-<h5 id="optimal-choice_1">✅ <strong>Optimal Choice:</strong></h5>
-<p>The <strong>ILI9341</strong> was selected for its <strong>high resolution, color display, and SPI interface</strong>, making it suitable for applications requiring detailed visual output.</p>
-<hr />
-<h2 id="23-esp32-table">🔹 2.3 ESP32 Table</h2>
 <ul>
-<li><strong>Model:</strong> ESP32-DEVKITC-32UE  </li>
-<li><strong>Max Current:</strong> 500 mA  </li>
+<li><strong>Purpose</strong>: Sends speed command to Motor Driver Subsystem.</li>
+<li><strong>Recipient</strong>: PIC18F47Q10 (Motor Driver).</li>
+<li><strong>Notes</strong>: Valid speed range is 0–1000 (mm/s). Messages outside this range are not transmitted.</li>
 </ul>
+<h3 id="message-type-2-request-sensor-data">Message Type 2 — Request Sensor Data</h3>
 <table>
 <thead>
 <tr>
-<th>Module</th>
-<th>Available</th>
-<th>Needed</th>
-<th>Associated Pins</th>
+<th>Byte(s)</th>
+<th>Variable Name</th>
+<th>Data Type</th>
+<th>Min</th>
+<th>Max</th>
+<th>Example</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>UART</strong></td>
-<td>3</td>
-<td>1</td>
-<td>GPIO1, GPIO3</td>
+<td>1–2</td>
+<td>msg_type</td>
+<td>uint16_t</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
 </tr>
 <tr>
-<td><strong>SPI</strong></td>
 <td>3</td>
+<td>sensor_id</td>
+<td>uint8_t</td>
 <td>1</td>
-<td>GPIO19, GPIO23, GPIO18, GPIO5</td>
-</tr>
-<tr>
-<td><strong>I2C</strong></td>
 <td>2</td>
 <td>1</td>
-<td>GPIO21, GPIO22</td>
 </tr>
 </tbody>
 </table>
-<hr />
-<h3 id="24-voltage-regulator-selection">🔹 2.4 Voltage Regulator Selection</h3>
-<h4 id="voltage-regulator-options"><strong>Voltage Regulator Options</strong></h4>
+<ul>
+<li><strong>Purpose</strong>: Requests environmental data from Sensor Subsystem.</li>
+<li><strong>Recipient</strong>: PIC18F47Q10 (Sensor Subsystem).</li>
+<li><strong>Notes</strong>: sensor_id 1 = DHT11, 2 = SEN0229. Any other ID is ignored.</li>
+</ul>
+<h3 id="message-type-5-cloud-update">Message Type 5 — Cloud Update</h3>
 <table>
 <thead>
 <tr>
-<th>Voltage Regulator</th>
-<th>Description</th>
-<th>Image</th>
-<th>Pros</th>
-<th>Cons</th>
-<th>Cost</th>
-<th>Link</th>
+<th>Byte(s)</th>
+<th>Variable Name</th>
+<th>Data Type</th>
+<th>Min</th>
+<th>Max</th>
+<th>Example</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>AP63203WU-7</strong> (Final Choice)</td>
-<td>3A synchronous buck converter</td>
-<td><a class="glightbox" href="../AP6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="AP63203WU-7" src="../AP6.png" /></a></td>
-<td>High efficiency, adjustable output voltage, low power dissipation</td>
-<td>Produces heat at high loads</td>
-<td>$1.38</td>
-<td><a href="https://www.digikey.com/en/products/detail/diodes-incorporated/AP63203WU-7/9858426">Link</a></td>
+<td>1–2</td>
+<td>msg_type</td>
+<td>uint16_t</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
 </tr>
 <tr>
-<td><strong>LM7805 Linear Regulator</strong></td>
-<td>5V fixed output linear regulator</td>
-<td><a class="glightbox" href="../LM785.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="LM7805" src="../LM785.png" /></a></td>
-<td>Simple drop-in solution, stable 5V output</td>
-<td>Higher power loss, requires heatsink at higher currents</td>
-<td>$1.07</td>
-<td><a href="https://www.digikey.com/en/products/detail/onsemi/MC7805CTG/919409">Link</a></td>
-</tr>
-<tr>
-<td><strong>LM2575 Switching Regulator</strong></td>
-<td>5V step-down switching regulator</td>
-<td><a class="glightbox" href="../LM275.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="LM2575" src="../LM275.png" /></a></td>
-<td>High efficiency, less heat dissipation</td>
-<td>More complex circuit (requires inductor), higher cost</td>
-<td>$2.84</td>
-<td><a href="https://www.digikey.com/en/products/detail/texas-instruments/LM2575SX-5-0-NOPB/151989">Link</a></td>
+<td>3–58</td>
+<td>json_data</td>
+<td>char[55]</td>
+<td>—</td>
+<td>—</td>
+<td>'{"T":25.5,"H":40,"F":10.2}'</td>
 </tr>
 </tbody>
 </table>
-<h5 id="optimal-choice_2">✅ <strong>Optimal Choice:</strong></h5>
-<p>The <strong>AP63203WU-7</strong> was selected for its <strong>high efficiency, low power dissipation, and adjustable output voltage</strong>, making it suitable for stable power supply requirements in our system.</p>
-<hr />
-<h2 id="personal-responsibilities">📌 Personal Responsibilities</h2>
-<p>I am responsible for <strong>managing the LCD module, ensuring integration with the microcontroller, setting up the SPI interface, and optimizing power usage</strong>.  </p>
-<p>Additionally, I work with other subsystems to ensure <strong>data integration, signal integrity, and firmware compatibility</strong>.  </p>
-<hr />
-<h2 id="conclusion">📌 Conclusion</h2>
-<p>This report provides the <strong>rationale behind key component selections</strong> based on <strong>performance, cost, efficiency, and compatibility</strong>. The inclusion of the <strong>ILI9341</strong> LCD display enhances our system's capability to provide detailed and colorful visual feedback, aligning with the project's objectives.  </p>
-<hr />
+<ul>
+<li><strong>Purpose</strong>: Publishes sensor data to MQTT cloud server.</li>
+<li><strong>Transmission</strong>: Via Wi-Fi (ESP32 client).</li>
+<li><strong>Notes</strong>: Message body must be valid JSON. Always ≤ 55 chars.</li>
+</ul>
+<h2 id="messages-received-uart">📥 Messages Received (UART)</h2>
+<h3 id="message-type-3-sensor-data-response">Message Type 3 — Sensor Data Response</h3>
+<table>
+<thead>
+<tr>
+<th>Byte(s)</th>
+<th>Variable Name</th>
+<th>Data Type</th>
+<th>Min</th>
+<th>Max</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–2</td>
+<td>msg_type</td>
+<td>uint16_t</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3–4</td>
+<td>temperature</td>
+<td>uint16_t</td>
+<td>0</td>
+<td>5000</td>
+<td>2550</td>
+</tr>
+<tr>
+<td>5–6</td>
+<td>humidity</td>
+<td>uint16_t</td>
+<td>0</td>
+<td>10000</td>
+<td>5010</td>
+</tr>
+<tr>
+<td>7–8</td>
+<td>flow_rate</td>
+<td>uint16_t</td>
+<td>0</td>
+<td>3000</td>
+<td>1050</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Purpose</strong>: Receives environment metrics for display and upload.</li>
+<li><strong>Sender</strong>: Sensor Subsystem (PIC18F47Q10).</li>
+<li><strong>Notes</strong>: Fixed-point encoding ×100. Parsed, validated, then used for display and cloud publishing.</li>
+</ul>
+<h3 id="message-type-6-error-message">Message Type 6 — Error Message</h3>
+<table>
+<thead>
+<tr>
+<th>Byte(s)</th>
+<th>Variable Name</th>
+<th>Data Type</th>
+<th>Min</th>
+<th>Max</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–2</td>
+<td>msg_type</td>
+<td>uint16_t</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr>
+<td>3</td>
+<td>subsystem_id</td>
+<td>uint8_t</td>
+<td>1</td>
+<td>5</td>
+<td>2</td>
+</tr>
+<tr>
+<td>4–58</td>
+<td>error_msg</td>
+<td>char[55]</td>
+<td>—</td>
+<td>—</td>
+<td>"Wi-Fi Timeout Retry"</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Purpose</strong>: Reports internal/system-wide errors.</li>
+<li><strong>Sender</strong>: Any subsystem.</li>
+<li><strong>Notes</strong>: Displayed on screen if HMI is relevant; otherwise logged to serial console.</li>
+</ul>
+<h2 id="internal-spi-message-not-uart">📺 Internal SPI Message (Not UART)</h2>
+<h3 id="lcd-display-update-local-only">LCD Display Update (Local Only)</h3>
+<table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Protocol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPI</td>
+<td>ILI9341</td>
+<td>Displays combined system data</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Inputs</strong>: Parsed data from Messages 1, 3, and 6.</li>
+<li><strong>Output</strong>: Human-readable string sent via <code>SPI.write()</code> to ILI9341.</li>
+</ul>
+<p><strong>Example Display</strong>:
+```text
+Speed: 200 mm/s
+Temp: 25.5°C
+Humidity: 50.1%
+Flow: 10.5 L/min</p>
 
 
 
@@ -1218,7 +1178,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../Block_Diagram/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Block Diagram" rel="prev">
+          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Welcome to My Project Page! 🚀" rel="prev">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -1228,20 +1188,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Block Diagram
+                Welcome to My Project Page! 🚀
               </div>
             </div>
           </a>
         
         
           
-          <a href="../Datasheet/" class="md-footer__link md-footer__link--next" aria-label="Next: Datasheet" rel="next">
+          <a href="../Appendix/" class="md-footer__link md-footer__link--next" aria-label="Next: Appendix" rel="next">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Datasheet
+                Appendix
               </div>
             </div>
             <div class="md-footer__button md-icon">
