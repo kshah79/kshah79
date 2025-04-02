@@ -1,96 +1,81 @@
-# 📡 API – HMI Subsystem (ESP32)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>API – HMI Subsystem</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; line-height: 1.6; }
+    h1, h2, h3 { color: #2a4d69; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 2rem; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+    th { background-color: #f4f4f4; }
+    code { background: #f0f0f0; padding: 2px 4px; border-radius: 4px; }
+  </style>
+</head>
+<body>
 
-## 🔍 Subsystem Role
-The HMI Subsystem, based on an ESP32 module, serves as the primary interface between the user and the full embedded system. It:
-- Initiates control messages (e.g., motor speed).
-- Requests and processes sensor data.
-- Displays real-time information on a local LCD via SPI.
-- Publishes environmental data to a cloud server using Wi-Fi (MQTT).
-- Handles error reporting across the system.
+  <h1>HMI Subsystem API</h1>
+  <p>This page documents the messages sent and received by the HMI subsystem as part of the modular weather monitoring system.</p>
 
-## 🔄 Message Exchange Summary
+  <h2>Message Type 10 — Request Weather Data Refresh</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Byte</th><th>Variable Name</th><th>Data Type</th><th>Min Value</th><th>Max Value</th><th>Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>message_type</td><td><code>uint8_t</code></td><td>10</td><td>10</td><td>10</td></tr>
+      <tr><td>2</td><td>refresh_type</td><td><code>uint8_t</code></td><td>0</td><td>3</td><td>1</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Purpose:</strong> Sent from HMI to Central Node to request updated sensor data.</p>
+  <ul>
+    <li>0 = Full refresh</li>
+    <li>1 = Temperature only</li>
+    <li>2 = Humidity only</li>
+    <li>3 = Pressure only</li>
+  </ul>
 
-| Direction  | Message Type | Description              | Communication | Status |
-|------------|--------------|--------------------------|---------------|--------|
-| Sent       | 1            | Set System Speed         | UART          | ✅      |
-| Sent       | 2            | Request Sensor Data      | UART          | ✅      |
-| Sent       | 5            | Cloud Update (JSON)      | Wi-Fi         | ✅      |
-| Received   | 3            | Sensor Data Response     | UART          | ✅      |
-| Received   | 6            | Error Message            | UART          | ✅      |
-| Internal   | —            | LCD Display Update (via SPI) | SPI (Local) | ✅      |
+  <h2>Message Type 21 — Sensor Data (to HMI)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Byte</th><th>Variable Name</th><th>Data Type</th><th>Min Value</th><th>Max Value</th><th>Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>message_type</td><td><code>uint8_t</code></td><td>21</td><td>21</td><td>21</td></tr>
+      <tr><td>2-3</td><td>temperature</td><td><code>int16_t</code></td><td>-400</td><td>850</td><td>225</td></tr>
+      <tr><td>4-5</td><td>humidity</td><td><code>uint16_t</code></td><td>0</td><td>1000</td><td>450</td></tr>
+      <tr><td>6-7</td><td>pressure</td><td><code>uint16_t</code></td><td>800</td><td>1200</td><td>1013</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Purpose:</strong> Sent from Central Node to HMI to update displayed data.</p>
+  <p><strong>Units:</strong></p>
+  <ul>
+    <li>Temperature in tenths of °C (e.g., 225 = 22.5°C)</li>
+    <li>Humidity in tenths of %</li>
+    <li>Pressure in tenths of hPa</li>
+  </ul>
 
-✅ All UART messages conform to the project-wide packet structure (Bytes 0–63) with the message payload occupying Bytes 4–61.
+  <h2>Message Type 32 — System Status Broadcast</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Byte</th><th>Variable Name</th><th>Data Type</th><th>Min Value</th><th>Max Value</th><th>Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>message_type</td><td><code>uint8_t</code></td><td>32</td><td>32</td><td>32</td></tr>
+      <tr><td>2</td><td>system_ok</td><td><code>uint8_t</code></td><td>0</td><td>1</td><td>1</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Purpose:</strong> Broadcast by Central Node. HMI uses this to display system health (OK or Error).</p>
 
-## 📨 Messages Sent (UART)
+  <hr />
+  <p><strong>Note:</strong> All messages conform to the class-wide protocol, occupying bytes 4–61 of the total packet. Sender/receiver IDs and framing bytes are handled externally.</p>
 
-### Message Type 1 — Set System Speed
-| Byte(s)  | Variable Name | Data Type | Min  | Max  | Example |
-|----------|---------------|-----------|------|------|---------|
-| 1–2      | msg_type      | uint16_t  | 1    | 1    | 1       |
-| 3–4      | speed_val     | uint16_t  | 0    | 1000 | 200     |
-
-- **Purpose**: Sends speed command to Motor Driver Subsystem.
-- **Recipient**: PIC18F47Q10 (Motor Driver).
-- **Notes**: Valid speed range is 0–1000 (mm/s). Messages outside this range are not transmitted.
-
-### Message Type 2 — Request Sensor Data
-| Byte(s)  | Variable Name | Data Type | Min  | Max  | Example |
-|----------|---------------|-----------|------|------|---------|
-| 1–2      | msg_type      | uint16_t  | 2    | 2    | 2       |
-| 3        | sensor_id     | uint8_t   | 1    | 2    | 1       |
-
-- **Purpose**: Requests environmental data from Sensor Subsystem.
-- **Recipient**: PIC18F47Q10 (Sensor Subsystem).
-- **Notes**: sensor_id 1 = DHT11, 2 = SEN0229. Any other ID is ignored.
-
-### Message Type 5 — Cloud Update
-| Byte(s)  | Variable Name | Data Type | Min  | Max  | Example |
-|----------|---------------|-----------|------|------|---------|
-| 1–2      | msg_type      | uint16_t  | 5    | 5    | 5       |
-| 3–58     | json_data     | char[55]  | —    | —    | '{"T":25.5,"H":40,"F":10.2}' |
-
-- **Purpose**: Publishes sensor data to MQTT cloud server.
-- **Transmission**: Via Wi-Fi (ESP32 client).
-- **Notes**: Message body must be valid JSON. Always ≤ 55 chars.
-
-## 📥 Messages Received (UART)
-
-### Message Type 3 — Sensor Data Response
-| Byte(s)  | Variable Name  | Data Type | Min  | Max   | Example |
-|----------|----------------|-----------|------|-------|---------|
-| 1–2      | msg_type       | uint16_t  | 3    | 3     | 3       |
-| 3–4      | temperature    | uint16_t  | 0    | 5000  | 2550    |
-| 5–6      | humidity       | uint16_t  | 0    | 10000 | 5010    |
-| 7–8      | flow_rate      | uint16_t  | 0    | 3000  | 1050    |
-
-- **Purpose**: Receives environment metrics for display and upload.
-- **Sender**: Sensor Subsystem (PIC18F47Q10).
-- **Notes**: Fixed-point encoding ×100. Parsed, validated, then used for display and cloud publishing.
-
-### Message Type 6 — Error Message
-| Byte(s)  | Variable Name  | Data Type | Min  | Max   | Example               |
-|----------|----------------|-----------|------|-------|-----------------------|
-| 1–2      | msg_type       | uint16_t  | 6    | 6     | 6                     |
-| 3        | subsystem_id   | uint8_t   | 1    | 5     | 2                     |
-| 4–58     | error_msg      | char[55]  | —    | —     | "Wi-Fi Timeout Retry"  |
-
-- **Purpose**: Reports internal/system-wide errors.
-- **Sender**: Any subsystem.
-- **Notes**: Displayed on screen if HMI is relevant; otherwise logged to serial console.
-
-## 📺 Internal SPI Message (Not UART)
-
-### LCD Display Update (Local Only)
-| Channel | Protocol | Description                          |
-|---------|----------|--------------------------------------|
-| SPI     | ILI9341  | Displays combined system data       |
-
-- **Inputs**: Parsed data from Messages 1, 3, and 6.
-- **Output**: Human-readable string sent via `SPI.write()` to ILI9341.
-
-**Example Display**:
-```text
-Speed: 200 mm/s
-Temp: 25.5°C
-Humidity: 50.1%
-Flow: 10.5 L/min
+</body>
+</html>
