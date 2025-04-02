@@ -1,7 +1,3 @@
----
-title: API
----
-
 # Subsystem: Human-Machine Interface (HMI)
 
 The following messages represent communication between the HMI and other subsystems in the weather monitoring system. These structures are used within the class messaging protocol and occupy **bytes 4–61** of the packet. Framing bytes, sender, and receiver are handled outside of this message structure.
