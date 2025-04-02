@@ -1,81 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>API – HMI Subsystem</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 2rem; line-height: 1.6; }
-    h1, h2, h3 { color: #2a4d69; }
-    table { border-collapse: collapse; width: 100%; margin-bottom: 2rem; }
-    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
-    th { background-color: #f4f4f4; }
-    code { background: #f0f0f0; padding: 2px 4px; border-radius: 4px; }
-  </style>
-</head>
-<body>
+---
+title: API
+---
 
-  <h1>HMI Subsystem API</h1>
-  <p>This page documents the messages sent and received by the HMI subsystem as part of the modular weather monitoring system.</p>
+# Subsystem: Human-Machine Interface (HMI)
 
-  <h2>Message Type 10 — Request Weather Data Refresh</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Byte</th><th>Variable Name</th><th>Data Type</th><th>Min Value</th><th>Max Value</th><th>Example</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>1</td><td>message_type</td><td><code>uint8_t</code></td><td>10</td><td>10</td><td>10</td></tr>
-      <tr><td>2</td><td>refresh_type</td><td><code>uint8_t</code></td><td>0</td><td>3</td><td>1</td></tr>
-    </tbody>
-  </table>
-  <p><strong>Purpose:</strong> Sent from HMI to Central Node to request updated sensor data.</p>
-  <ul>
-    <li>0 = Full refresh</li>
-    <li>1 = Temperature only</li>
-    <li>2 = Humidity only</li>
-    <li>3 = Pressure only</li>
-  </ul>
+The following messages represent communication between the HMI and other subsystems in the weather monitoring system. These structures are used within the class messaging protocol and occupy **bytes 4–61** of the packet. Framing bytes, sender, and receiver are handled outside of this message structure.
 
-  <h2>Message Type 21 — Sensor Data (to HMI)</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Byte</th><th>Variable Name</th><th>Data Type</th><th>Min Value</th><th>Max Value</th><th>Example</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>1</td><td>message_type</td><td><code>uint8_t</code></td><td>21</td><td>21</td><td>21</td></tr>
-      <tr><td>2-3</td><td>temperature</td><td><code>int16_t</code></td><td>-400</td><td>850</td><td>225</td></tr>
-      <tr><td>4-5</td><td>humidity</td><td><code>uint16_t</code></td><td>0</td><td>1000</td><td>450</td></tr>
-      <tr><td>6-7</td><td>pressure</td><td><code>uint16_t</code></td><td>800</td><td>1200</td><td>1013</td></tr>
-    </tbody>
-  </table>
-  <p><strong>Purpose:</strong> Sent from Central Node to HMI to update displayed data.</p>
-  <p><strong>Units:</strong></p>
-  <ul>
-    <li>Temperature in tenths of °C (e.g., 225 = 22.5°C)</li>
-    <li>Humidity in tenths of %</li>
-    <li>Pressure in tenths of hPa</li>
-  </ul>
+---
 
-  <h2>Message Type 32 — System Status Broadcast</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Byte</th><th>Variable Name</th><th>Data Type</th><th>Min Value</th><th>Max Value</th><th>Example</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>1</td><td>message_type</td><td><code>uint8_t</code></td><td>32</td><td>32</td><td>32</td></tr>
-      <tr><td>2</td><td>system_ok</td><td><code>uint8_t</code></td><td>0</td><td>1</td><td>1</td></tr>
-    </tbody>
-  </table>
-  <p><strong>Purpose:</strong> Broadcast by Central Node. HMI uses this to display system health (OK or Error).</p>
+## Message Type 10 – Request Weather Data Refresh
 
-  <hr />
-  <p><strong>Note:</strong> All messages conform to the class-wide protocol, occupying bytes 4–61 of the total packet. Sender/receiver IDs and framing bytes are handled externally.</p>
+**Direction:** Sent from HMI to Central Node  
+**Purpose:** Request new data from sensors, triggered by user interaction.
 
-</body>
-</html>
+| Byte(s) | Variable Name  | Data Type | Min Value | Max Value | Example |
+|---------|----------------|-----------|-----------|-----------|---------|
+| 1       | message_type   | uint8_t   | 10        | 10        | 10      |
+| 2       | refresh_type   | uint8_t   | 0         | 3         | 1       |
+
+**Explanation:**
+- `refresh_type` values:
+  - 0 → Full refresh
+  - 1 → Temperature only
+  - 2 → Humidity only
+  - 3 → Pressure only
+
+---
+
+## Message Type 21 – Sensor Data Response
+
+**Direction:** Received by HMI from Central Node  
+**Purpose:** Display updated weather sensor data.
+
+| Byte(s) | Variable Name | Data Type | Min Value | Max Value | Example |
+|---------|----------------|-----------|-----------|-----------|---------|
+| 1       | message_type   | uint8_t   | 21        | 21        | 21      |
+| 2–3     | temperature    | int16_t   | -400      | 850       | 225     |
+| 4–5     | humidity       | uint16_t  | 0         | 1000      | 450     |
+| 6–7     | pressure       | uint16_t  | 800       | 1200      | 1013    |
+
+**Notes:**
+- `temperature`: tenths of degrees Celsius (e.g., 225 → 22.5°C)
+- `humidity`: tenths of percent
+- `pressure`: tenths of hPa
+
+---
+
+## Message Type 32 – System Status Broadcast
+
+**Direction:** Broadcast from Central Node to all subsystems  
+**Purpose:** Communicate overall system health status.
+
+| Byte(s) | Variable Name | Data Type | Min Value | Max Value | Example |
+|---------|----------------|-----------|-----------|-----------|---------|
+| 1       | message_type   | uint8_t   | 32        | 32        | 32      |
+| 2       | system_ok      | uint8_t   | 0         | 1         | 1       |
+
+**Explanation:**
+- `system_ok`:
+  - 0 → System Error
+  - 1 → System Operational
+
+---
+
+## Notes
+
+- All messages listed are limited to the **message data area** (bytes 4–61) of the standard packet.
+- Values are bounded to **C-compatible data types** to ensure consistency across MicroPython and C implementations.
+- Any changes to these structures must be coordinated with team members, especially those responsible for the Central Node subsystem.
