@@ -41,6 +41,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://embedded-systems-design.github.io/template_report/Schematic%20and%20PCB/</loc>
+         <lastmod>2025-04-12</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://embedded-systems-design.github.io/template_report/Schematic/</loc>
          <lastmod>2025-04-12</lastmod>
          <changefreq>daily</changefreq>
