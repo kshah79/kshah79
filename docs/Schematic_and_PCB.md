@@ -5,6 +5,11 @@ Below is the **Schematic and PCB**, providing an overview of the components used
 ![Schematic](Schematic.png)  
 🔗 [**View the Schematic**](https://drive.google.com/file/d/1G5POpkL_Rq6nyJ6cgbkoUedZWS8gGMQq/view?usp=sharing)  
 
+🔗 [**Schematic PDF**](https://drive.google.com/file/d/1PkatHU5QPrgG20pZr__rVINxxkNDHXXC/view?usp=sharing)  
+🔗 [**PCB PDF**](https://drive.google.com/file/d/1mB5NOC1OxFwm2_9jSVI-WRnBECpQE7a5/view?usp=sharing)  
+
+
+
 ![Top Layer: PCB](Top_Layer_PCB.png)  
 🔗 [**View PCB: Top Layer**](https://drive.google.com/file/d/1dhD5Cz_LtUWb9P19EDQvj1NKTsKChQoR/view?usp=sharing)  
 
