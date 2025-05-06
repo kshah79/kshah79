@@ -20,17 +20,17 @@ Each inter-PCB message is a fixed 64-byte frame:
 
 ### 1.2 Message Types & Payloads
 
-1. **Set Water Flow**  
+- **Set Water Flow**  
    - **Type:** `0x0001`  
    - **Payload (bytes 6–7):** `uint16_t` flow rate in L/min × 100 (e.g., 10.5 L/min → 1050).  
    - **Use:** ESP32 or Web → Motor board.
 
-2. **Request Sensor Data**  
+- **Request Sensor Data**  
    - **Type:** `0x0002`  
    - **Payload (byte 6):** `uint8_t` sensor ID (1 = DHT11, 2 = BMP180).  
    - **Use:** ESP32 → Sensor board.
 
-3. **Sensor Data Response**  
+- **Sensor Data Response**  
    - **Type:** `0x0003`  
    - **Payload:**  
      - Bytes 6–7: `uint16_t` temperature (°C × 100)  
@@ -38,7 +38,7 @@ Each inter-PCB message is a fixed 64-byte frame:
      - Bytes 10–11: `uint16_t` water flow (L/min × 100)  
    - **Use:** Sensor board → ESP32/HMI/Motor board.
 
-4. **LCD Update Command**  
+- **LCD Update Command**  
    - **Type:** `0x0004`  
    - **Payload (bytes 6–61):** ASCII text string (max 56 chars) to display, e.g.  
      ```
@@ -46,7 +46,7 @@ Each inter-PCB message is a fixed 64-byte frame:
      ```
    - **Use:** ESP32 → HMI board.
 
-5. **Cloud Update**  
+- **Cloud Update**  
    - **Type:** `0x0005`  
    - **Payload (bytes 6–61):** ASCII-encoded JSON (max 56 bytes), e.g.:  
      ```json
@@ -54,7 +54,7 @@ Each inter-PCB message is a fixed 64-byte frame:
      ```
    - **Use:** ESP32 → Cloud gateway.
 
-6. **Error Message**  
+- **Error Message**  
    - **Type:** `0x0006`  
    - **Payload:**  
      - Byte 6: `uint8_t` subsystem ID (1 = PIC18, 2 = ESP32, 3 = Sensor, 4 = Pump, 5 = LCD)  
