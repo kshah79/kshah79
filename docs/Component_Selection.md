@@ -69,19 +69,19 @@ This section documents all major components chosen for our final design. New par
 
 In assembling this section, I:
 
-1. **Reviewed Product Requirements**  
+- **Reviewed Product Requirements**  
    - Real-time updates (< 500 ms), low-power, SMD form-factor, educational clarity.
 
-2. **Cataloged Candidate Parts**  
+- **Cataloged Candidate Parts**  
    - Added BMP180 and RP2040 to the list after in-person feedback; discarded options that failed cost or integration checks.
 
-3. **Balanced Trade-Offs**  
+- **Balanced Trade-Offs**  
    - Prioritized built-in wireless (ESP32) over external modules, and high-efficiency switching regulators over linear solutions.
 
-4. **Aligned with Team Roles**  
+- **Aligned with Team Roles**  
    - Ensured each component fit the PCB footprint and could be tested independently by its owner (Kevin → ILI9341 & ESP32).
 
-5. **Validated in Lab Demos**  
+- **Validated in Lab Demos**  
    - Verified actual current draw, SPI timings, and I²C reliability before finalizing.
 
 > **Outcome:** Our selected parts meet all electrical, mechanical, and pedagogical goals—and simplify assembly for the Innovation Showcase.
@@ -117,23 +117,23 @@ In assembling this section, I:
 
 To build the power budget, I followed these steps:
 
-1. **Gathered Current Draw Data**  
+- **Gathered Current Draw Data**  
    - **Datasheet Values:** I extracted typical and active‐mode currents from each major component’s datasheet (e.g., ESP32-WROOM-32: 20 mA idle, 240 mA peak during Wi-Fi TX).  
    - **Lab Measurements:** For dynamic loads (ILI9341 backlight, water pump), I measured currents under representative operating conditions, then averaged them over a duty cycle.
 
-2. **Calculated Per-Component Power**  
+- **Calculated Per-Component Power**  
    - For each device, I multiplied its average current (I<sub>avg</sub>) by its operating voltage (V<sub>oper</sub>) to get power in milliwatts (P = V·I).  
    - Example: ESP32 at 3.3 V × 200 mA → 660 mW.
 
-3. **Summed Logic & Actuator Loads Separately**  
+- **Summed Logic & Actuator Loads Separately**  
    - **Logic Subsystem:** ESP32, PIC18F, sensors, display, and driver, totaled ~997 mW.  
    - **Actuator (Pump):** 9 V × 100 mA → 900 mW.
 
-4. **Added Regulator Overhead**  
+- **Added Regulator Overhead**  
    - Based on the AP63203WU-7 efficiency curve, I assumed a conservative 5 % conversion loss.  
    - Overhead = (Logic Subtotal + Actuator Load) × 0.05 ≈ 95 mW.
 
-5. **Checked Supply Ratings & Margin**  
+- **Checked Supply Ratings & Margin**  
    - **3.3 V Rail:** AP63203WU-7 rated for 3 A (≈10 W) — far above our ~300 mA (1 W) requirement, providing >10× margin.  
    - **9 V Source:** Rated at 1 A (9 W), comfortably handles the 1.9 W system load with room for sensor bursts and startup surges.
 
