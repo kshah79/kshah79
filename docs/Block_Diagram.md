@@ -11,24 +11,24 @@ Below is the **block diagram**, providing an overview of the components used in 
 ## 1. Decision-Making Process
 
 - **Centralizing Display & Cloud Connectivity**  
-   - **Why**: The HMI board is the user’s primary touchpoint—both on-site via the SPI LCD and remotely via MQTT—so combining the ESP32’s display-driving and Wi-Fi roles on one PCB minimizes inter-board dependencies.  
-   - **How**: We placed the ILI9341 (SPI LCD) and the ESP32 Wi-Fi module in the same block, wired over SPI for the screen and over the ESP32’s built-in UART and GPIO pins for network/control signals.
+  **Why**: The HMI board is the user’s primary touchpoint—both on-site via the SPI LCD and remotely via MQTT—so combining the ESP32’s display-driving and Wi-Fi roles on one PCB minimizes inter-board dependencies.  
+  **How**: We placed the ILI9341 (SPI LCD) and the ESP32 Wi-Fi module in the same block, wired over SPI for the screen and over the ESP32’s built-in UART and GPIO pins for network/control signals.
 
 - **Power Integrity & Isolation**  
-   - **Why**: Display updates (especially during backlight changes) and Wi-Fi radio bursts draw significant current. Unstable voltage could corrupt data on the daisy-chain bus.  
-   - **How**: We included a dedicated 3.3 V switching regulator on our HMI board, fed from the 9 V barrel jack, with its own input decoupling caps. The clean 3.3 V rail powers both the ESP32 and the LCD module.
+  **Why**: Display updates (especially during backlight changes) and Wi-Fi radio bursts draw significant current. Unstable voltage could corrupt data on the daisy-chain bus.  
+  **How**: We included a dedicated 3.3 V switching regulator on our HMI board, fed from the 9 V barrel jack, with its own input decoupling caps. The clean 3.3 V rail powers both the ESP32 and the LCD module.
 
 - **UART Daisy-Chain Integration**  
-   - **Why**: To pass sensor readings and motor commands through the HMI en route between the Sensor board and Motor board, while also listening for messages addressed to ‘K’.  
-   - **How**: We routed the bus’s RX (Pin 36) and TX (Pin 37) lines into the ESP32’s serial RX/TX pins. Our firmware examines the Source/Dest bytes and either forwards or processes each 64-byte frame.
+  **Why**: To pass sensor readings and motor commands through the HMI en route between the Sensor board and Motor board, while also listening for messages addressed to ‘K’.  
+  **How**: We routed the bus’s RX (Pin 36) and TX (Pin 37) lines into the ESP32’s serial RX/TX pins. Our firmware examines the Source/Dest bytes and either forwards or processes each 64-byte frame.
 
 - **GPIO-Driven User Controls**  
-   - **Why**: Physical buttons on the HMI allow manual “water flow override” or “data refresh” without needing the web interface.  
-   - **How**: We mapped key GPIO pins on the ESP32 to upstream header pins and onboard push-buttons (not shown here), so button presses generate outgoing “Set Water Flow” frames.
+  **Why**: Physical buttons on the HMI allow manual “water flow override” or “data refresh” without needing the web interface.  
+  **How**: We mapped key GPIO pins on the ESP32 to upstream header pins and onboard push-buttons (not shown here), so button presses generate outgoing “Set Water Flow” frames.
 
 - **Modularity & Header Layout**  
-   - **Why**: Uniform headers across all four PCBs simplify wiring and reduce assembly errors at the showcase.  
-   - **How**: We replicated the 8-pin upstream/downstream header footprint used on other boards. Power, ground, UART, and two GPIO lines occupy the same pins at each stage.
+  **Why**: Uniform headers across all four PCBs simplify wiring and reduce assembly errors at the showcase.  
+  **How**: We replicated the 8-pin upstream/downstream header footprint used on other boards. Power, ground, UART, and two GPIO lines occupy the same pins at each stage.
 
 ---
 
