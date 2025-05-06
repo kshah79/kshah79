@@ -1121,7 +1121,7 @@
 <hr />
 <h2 id="3-decision-making-process">3. Decision-Making Process</h2>
 <p>In assembling this section, I:</p>
-<ol>
+<ul>
 <li><strong>Reviewed Product Requirements</strong>  </li>
 <li>
 <p>Real-time updates (&lt; 500 ms), low-power, SMD form-factor, educational clarity.</p>
@@ -1148,7 +1148,7 @@
 <p><strong>Validated in Lab Demos</strong>  </p>
 </li>
 <li>Verified actual current draw, SPI timings, and I²C reliability before finalizing.</li>
-</ol>
+</ul>
 <blockquote>
 <p><strong>Outcome:</strong> Our selected parts meet all electrical, mechanical, and pedagogical goals—and simplify assembly for the Innovation Showcase.</p>
 </blockquote>
@@ -1250,7 +1250,7 @@
 </ul>
 <h3 id="42-using-the-power-budget-to-estimate-needs-key-conclusions">4.2 Using the Power Budget to Estimate Needs &amp; Key Conclusions</h3>
 <p>To build the power budget, I followed these steps:</p>
-<ol>
+<ul>
 <li><strong>Gathered Current Draw Data</strong>  </li>
 <li><strong>Datasheet Values:</strong> I extracted typical and active‐mode currents from each major component’s datasheet (e.g., ESP32-WROOM-32: 20 mA idle, 240 mA peak during Wi-Fi TX).  </li>
 <li>
@@ -1282,7 +1282,7 @@
 </li>
 <li><strong>3.3 V Rail:</strong> AP63203WU-7 rated for 3 A (≈10 W) — far above our ~300 mA (1 W) requirement, providing &gt;10× margin.  </li>
 <li><strong>9 V Source:</strong> Rated at 1 A (9 W), comfortably handles the 1.9 W system load with room for sensor bursts and startup surges.</li>
-</ol>
+</ul>
 <h4 id="key-conclusions">Key Conclusions</h4>
 <ul>
 <li><strong>Regulator Choice Validated:</strong> The AP63203WU-7’s headroom ensures minimal thermal stress even under continuous Wi-Fi and backlight use.  </li>
