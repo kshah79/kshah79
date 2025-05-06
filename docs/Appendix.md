@@ -28,19 +28,19 @@ title: Appendix
 
 ## Title: Meeting Coordination
 
-1. **What method will you use to remind yourselves of meetings (a shared calendar?)**
+- **What method will you use to remind yourselves of meetings (a shared calendar?)**
 
    Group text reminders.
 
-2. **How will your team go about changing or adding meeting times?**
+- **How will your team go about changing or adding meeting times?**
 
    Group text and finding what times work for the team. Sometimes in-person meetings will not be available for everybody, so depending on the situation, the team would have to discover what is necessary to get the required communication.
 
-3. **What's the preferred format for meetings (face-to-face or virtually)?**
+- **What's the preferred format for meetings (face-to-face or virtually)?**
 
    Face-to-face is ideal for most situations. However, for assignments that are already mentioned, late-night hours work for most individuals. The available hours are a key factor in scheduling meetings.
 
-4. **Are there any other procedures that your team feels are necessary? Describe them.**
+- **Are there any other procedures that your team feels are necessary? Describe them.**
 
    To-do lists and identifying who is best suited for each task, while ensuring no one works alone on any singular task.
 
@@ -65,27 +65,27 @@ The team will communicate and volunteer for each role based on what they believe
 
 ## Additional Questions:
 
-1. **How often will you change project roles?**
+- **How often will you change project roles?**
 
    Team members will change roles as the class demands and depending on the needs of the project.
 
-2. **How will you decide who is assigned to each role?**
+- **How will you decide who is assigned to each role?**
 
    The team will decide collectively, ensuring that roles align with the tasks that need to be accomplished.
 
-3. **How will team members help one another meet their responsibilities?**
+- **How will team members help one another meet their responsibilities?**
 
    Team members will be responsible for taking action, answering communication, and stepping up to new work. Each member is expected to contribute a plan of action to meet team goals. The assignment leader or project manager will oversee and ensure roles are fulfilled.
 
-4. **How will you identify and respond to situations in which the team must adjust roles and responsibilities?**
+- **How will you identify and respond to situations in which the team must adjust roles and responsibilities?**
 
    If roles need to change, the team will act quickly and decisively based on the consequences of the situation.
 
-5. **How will you track the team activities and milestones?**
+- **How will you track the team activities and milestones?**
 
    By using to-do lists that are regularly updated and communicated through the team's group chat.
 
-6. **How will you assign technical responsibilities to the team members?**
+- **How will you assign technical responsibilities to the team members?**
 
    The assignment leader or project manager will assign technical responsibilities for tasks, while the meeting leader ensures understanding of the current to-do list.
 
