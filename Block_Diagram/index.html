@@ -695,37 +695,31 @@
 <h1 id="kevin-shahs-hmi-subsystem-block-diagram">Kevin Shah’s HMI Subsystem Block Diagram</h1>
 <h2 id="1-decision-making-process">1. Decision-Making Process</h2>
 <ul>
-<li><strong>Centralizing Display &amp; Cloud Connectivity</strong>  </li>
-<li><strong>Why</strong>: The HMI board is the user’s primary touchpoint—both on-site via the SPI LCD and remotely via MQTT—so combining the ESP32’s display-driving and Wi-Fi roles on one PCB minimizes inter-board dependencies.  </li>
 <li>
-<p><strong>How</strong>: We placed the ILI9341 (SPI LCD) and the ESP32 Wi-Fi module in the same block, wired over SPI for the screen and over the ESP32’s built-in UART and GPIO pins for network/control signals.</p>
+<p><strong>Centralizing Display &amp; Cloud Connectivity</strong><br />
+<strong>Why</strong>: The HMI board is the user’s primary touchpoint—both on-site via the SPI LCD and remotely via MQTT—so combining the ESP32’s display-driving and Wi-Fi roles on one PCB minimizes inter-board dependencies.<br />
+<strong>How</strong>: We placed the ILI9341 (SPI LCD) and the ESP32 Wi-Fi module in the same block, wired over SPI for the screen and over the ESP32’s built-in UART and GPIO pins for network/control signals.</p>
 </li>
 <li>
-<p><strong>Power Integrity &amp; Isolation</strong>  </p>
-</li>
-<li><strong>Why</strong>: Display updates (especially during backlight changes) and Wi-Fi radio bursts draw significant current. Unstable voltage could corrupt data on the daisy-chain bus.  </li>
-<li>
-<p><strong>How</strong>: We included a dedicated 3.3 V switching regulator on our HMI board, fed from the 9 V barrel jack, with its own input decoupling caps. The clean 3.3 V rail powers both the ESP32 and the LCD module.</p>
+<p><strong>Power Integrity &amp; Isolation</strong><br />
+<strong>Why</strong>: Display updates (especially during backlight changes) and Wi-Fi radio bursts draw significant current. Unstable voltage could corrupt data on the daisy-chain bus.<br />
+<strong>How</strong>: We included a dedicated 3.3 V switching regulator on our HMI board, fed from the 9 V barrel jack, with its own input decoupling caps. The clean 3.3 V rail powers both the ESP32 and the LCD module.</p>
 </li>
 <li>
-<p><strong>UART Daisy-Chain Integration</strong>  </p>
-</li>
-<li><strong>Why</strong>: To pass sensor readings and motor commands through the HMI en route between the Sensor board and Motor board, while also listening for messages addressed to ‘K’.  </li>
-<li>
-<p><strong>How</strong>: We routed the bus’s RX (Pin 36) and TX (Pin 37) lines into the ESP32’s serial RX/TX pins. Our firmware examines the Source/Dest bytes and either forwards or processes each 64-byte frame.</p>
+<p><strong>UART Daisy-Chain Integration</strong><br />
+<strong>Why</strong>: To pass sensor readings and motor commands through the HMI en route between the Sensor board and Motor board, while also listening for messages addressed to ‘K’.<br />
+<strong>How</strong>: We routed the bus’s RX (Pin 36) and TX (Pin 37) lines into the ESP32’s serial RX/TX pins. Our firmware examines the Source/Dest bytes and either forwards or processes each 64-byte frame.</p>
 </li>
 <li>
-<p><strong>GPIO-Driven User Controls</strong>  </p>
-</li>
-<li><strong>Why</strong>: Physical buttons on the HMI allow manual “water flow override” or “data refresh” without needing the web interface.  </li>
-<li>
-<p><strong>How</strong>: We mapped key GPIO pins on the ESP32 to upstream header pins and onboard push-buttons (not shown here), so button presses generate outgoing “Set Water Flow” frames.</p>
+<p><strong>GPIO-Driven User Controls</strong><br />
+<strong>Why</strong>: Physical buttons on the HMI allow manual “water flow override” or “data refresh” without needing the web interface.<br />
+<strong>How</strong>: We mapped key GPIO pins on the ESP32 to upstream header pins and onboard push-buttons (not shown here), so button presses generate outgoing “Set Water Flow” frames.</p>
 </li>
 <li>
-<p><strong>Modularity &amp; Header Layout</strong>  </p>
+<p><strong>Modularity &amp; Header Layout</strong><br />
+<strong>Why</strong>: Uniform headers across all four PCBs simplify wiring and reduce assembly errors at the showcase.<br />
+<strong>How</strong>: We replicated the 8-pin upstream/downstream header footprint used on other boards. Power, ground, UART, and two GPIO lines occupy the same pins at each stage.</p>
 </li>
-<li><strong>Why</strong>: Uniform headers across all four PCBs simplify wiring and reduce assembly errors at the showcase.  </li>
-<li><strong>How</strong>: We replicated the 8-pin upstream/downstream header footprint used on other boards. Power, ground, UART, and two GPIO lines occupy the same pins at each stage.</li>
 </ul>
 <hr />
 <h2 id="2-alignment-with-product-requirements">2. Alignment with Product Requirements</h2>
