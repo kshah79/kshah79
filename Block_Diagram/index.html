@@ -766,7 +766,7 @@
 <p>🔗 <a href="https://drive.google.com/file/d/1RpGKMqPx2KDftNLyvjiD0EZUxZtFBrqE/view?usp=sharing"><strong>View Full Block Diagram</strong></a>  </p>
 <h1 id="kevin-shahs-hmi-subsystem-block-diagram">Kevin Shah’s HMI Subsystem Block Diagram</h1>
 <h2 id="1-decision-making-process">1. Decision-Making Process</h2>
-<ol>
+<ul>
 <li><strong>Centralizing Display &amp; Cloud Connectivity</strong>  </li>
 <li><strong>Why</strong>: The HMI board is the user’s primary touchpoint—both on-site via the SPI LCD and remotely via MQTT—so combining the ESP32’s display-driving and Wi-Fi roles on one PCB minimizes inter-board dependencies.  </li>
 <li>
@@ -798,7 +798,7 @@
 </li>
 <li><strong>Why</strong>: Uniform headers across all four PCBs simplify wiring and reduce assembly errors at the showcase.  </li>
 <li><strong>How</strong>: We replicated the 8-pin upstream/downstream header footprint used on other boards. Power, ground, UART, and two GPIO lines occupy the same pins at each stage.</li>
-</ol>
+</ul>
 <hr />
 <h2 id="2-alignment-with-product-requirements">2. Alignment with Product Requirements</h2>
 <table>
