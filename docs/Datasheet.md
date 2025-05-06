@@ -27,6 +27,14 @@ Below is the **Schematic and PCB**, providing an overview of the components used
 🔗 [**View 3D View of PCB**](https://drive.google.com/file/d/1WreppTGnbz-ksFBE5IJjrEa2b22zba7d/view?usp=sharing) 
 
 
+# E-Cad File
+[Download the ECAD File](PCB_Project_EGR314.zip)
+
+# Gerber File
+[Download the ECAD Gerbers](Gerber_And_Drill_Files.zip)
+
+
+
 # Schematic Functionality vs. Requirements
 
 Our final HMI‐centric schematic brings together power, processing, user I/O, and communications into a single coherent PCB layout. Key functional elements include:
