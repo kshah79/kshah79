@@ -549,6 +549,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#kevin-shahs-hmi-subsystem-block-diagram" class="md-nav__link">
+    Kevin Shah’s HMI Subsystem Block Diagram
+  </a>
+  
+    <nav class="md-nav" aria-label="Kevin Shah’s HMI Subsystem Block Diagram">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-decision-making-process" class="md-nav__link">
+    1. Decision-Making Process
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-alignment-with-product-requirements" class="md-nav__link">
+    2. Alignment with Product Requirements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -683,6 +710,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#kevin-shahs-hmi-subsystem-block-diagram" class="md-nav__link">
+    Kevin Shah’s HMI Subsystem Block Diagram
+  </a>
+  
+    <nav class="md-nav" aria-label="Kevin Shah’s HMI Subsystem Block Diagram">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-decision-making-process" class="md-nav__link">
+    1. Decision-Making Process
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-alignment-with-product-requirements" class="md-nav__link">
+    2. Alignment with Product Requirements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -706,12 +760,87 @@
   
 
 
-  <h1>Block Diagram</h1>
-
 <h2 id="block-diagram">Block Diagram 📊</h2>
 <p>Below is the <strong>block diagram</strong>, providing an overview of the components used in our system and how they interact with teammates' designs. This diagram also highlights how multiple perspectives were considered in designing the <strong>LCD module</strong>.  </p>
 <p><a class="glightbox" href="../Kevin_Block_Diagram.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Block Diagram" src="../Kevin_Block_Diagram.png" /></a>  </p>
 <p>🔗 <a href="https://drive.google.com/file/d/1RpGKMqPx2KDftNLyvjiD0EZUxZtFBrqE/view?usp=sharing"><strong>View Full Block Diagram</strong></a>  </p>
+<h1 id="kevin-shahs-hmi-subsystem-block-diagram">Kevin Shah’s HMI Subsystem Block Diagram</h1>
+<h2 id="1-decision-making-process">1. Decision-Making Process</h2>
+<ol>
+<li><strong>Centralizing Display &amp; Cloud Connectivity</strong>  </li>
+<li><strong>Why</strong>: The HMI board is the user’s primary touchpoint—both on-site via the SPI LCD and remotely via MQTT—so combining the ESP32’s display-driving and Wi-Fi roles on one PCB minimizes inter-board dependencies.  </li>
+<li>
+<p><strong>How</strong>: We placed the ILI9341 (SPI LCD) and the ESP32 Wi-Fi module in the same block, wired over SPI for the screen and over the ESP32’s built-in UART and GPIO pins for network/control signals.</p>
+</li>
+<li>
+<p><strong>Power Integrity &amp; Isolation</strong>  </p>
+</li>
+<li><strong>Why</strong>: Display updates (especially during backlight changes) and Wi-Fi radio bursts draw significant current. Unstable voltage could corrupt data on the daisy-chain bus.  </li>
+<li>
+<p><strong>How</strong>: We included a dedicated 3.3 V switching regulator on our HMI board, fed from the 9 V barrel jack, with its own input decoupling caps. The clean 3.3 V rail powers both the ESP32 and the LCD module.</p>
+</li>
+<li>
+<p><strong>UART Daisy-Chain Integration</strong>  </p>
+</li>
+<li><strong>Why</strong>: To pass sensor readings and motor commands through the HMI en route between the Sensor board and Motor board, while also listening for messages addressed to ‘K’.  </li>
+<li>
+<p><strong>How</strong>: We routed the bus’s RX (Pin 36) and TX (Pin 37) lines into the ESP32’s serial RX/TX pins. Our firmware examines the Source/Dest bytes and either forwards or processes each 64-byte frame.</p>
+</li>
+<li>
+<p><strong>GPIO-Driven User Controls</strong>  </p>
+</li>
+<li><strong>Why</strong>: Physical buttons on the HMI allow manual “water flow override” or “data refresh” without needing the web interface.  </li>
+<li>
+<p><strong>How</strong>: We mapped key GPIO pins on the ESP32 to upstream header pins and onboard push-buttons (not shown here), so button presses generate outgoing “Set Water Flow” frames.</p>
+</li>
+<li>
+<p><strong>Modularity &amp; Header Layout</strong>  </p>
+</li>
+<li><strong>Why</strong>: Uniform headers across all four PCBs simplify wiring and reduce assembly errors at the showcase.  </li>
+<li><strong>How</strong>: We replicated the 8-pin upstream/downstream header footprint used on other boards. Power, ground, UART, and two GPIO lines occupy the same pins at each stage.</li>
+</ol>
+<hr />
+<h2 id="2-alignment-with-product-requirements">2. Alignment with Product Requirements</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Block Diagram Feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Real-time, local feedback</strong></td>
+<td>SPI-driven ILI9341 LCD updates in &lt;50 ms after a Type 4 frame.</td>
+</tr>
+<tr>
+<td><strong>Remote monitoring &amp; control</strong></td>
+<td>ESP32 Wi-Fi → MQTT link shown by Wi-Fi icon and cloud arrow.</td>
+</tr>
+<tr>
+<td><strong>Power stability under dynamic load</strong></td>
+<td>On-board 3.3 V switching regulator isolates display &amp; radio.</td>
+</tr>
+<tr>
+<td><strong>Seamless daisy-chain routing</strong></td>
+<td>RX/TX bus arrows into/out of the ESP32 block for frame forwarding.</td>
+</tr>
+<tr>
+<td><strong>User-driven overrides</strong></td>
+<td>GPIO arrow from ESP32 to header supports manual button commands.</td>
+</tr>
+<tr>
+<td><strong>Ease of assembly &amp; expansion</strong></td>
+<td>Standardized 8-pin headers match other subsystems, allowing mid-chain additions.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Deterministic Latency</strong>: By colocating the display driver and cloud transceiver, we eliminate extra hops—ensuring that once the ESP32 has sensor data, both local and remote updates occur in parallel, keeping total loop time under 500 ms.  </li>
+<li><strong>Educational Transparency</strong>: The diagram’s clear segregation (power, bus, peripherals) helps K–12 students trace how electricity and data move through the system.  </li>
+<li><strong>Scalability</strong>: Future enhancements (e.g., adding an additional status LED or a secondary sensor) can tap the same 3.3 V rail, UART bus, and GPIO header pins without redrawing the core block structure.  </li>
+<li><strong>Reliability</strong>: The dedicated regulator and simple header wiring reduce points of failure, vital for a public exhibit environment.</li>
+</ul>
 
 
 
